@@ -54,3 +54,36 @@ interface RobotArmy {
 let fightRobotArmy = (robots: RobotArmy) => {
     console.log('FIGHT')
 }
+
+//Type Assertion
+interface CatArmy {
+    count: number,
+    type: string,
+    magic: string
+}
+
+let dog = {} as CatArmy
+dog.count
+
+// Function
+let fightRobotArmy2 = (robots: RobotArmy): void => {
+    console.log('FIGHT')
+}
+
+//Classes
+class Animal {
+    sing: string = 'lalalalala'
+    constructor(sound: string) {
+        this.sing = sound;
+    }
+
+    greet() {
+        return `Hello ${this.sing}`
+    }
+}
+
+let lion = new Animal('RAAAWWR')
+lion.sing
+
+//Union 
+let confused: string | number = 'hello'

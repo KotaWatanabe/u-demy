@@ -41,3 +41,24 @@ var error = function () {
 var fightRobotArmy = function (robots) {
     console.log('FIGHT');
 };
+var dog = {};
+dog.count;
+// Function
+var fightRobotArmy2 = function (robots) {
+    console.log('FIGHT');
+};
+//Classes
+var Animal = /** @class */ (function () {
+    function Animal(sound) {
+        this.sing = 'lalalalala';
+        this.sing = sound;
+    }
+    Animal.prototype.greet = function () {
+        return "Hello " + this.sing;
+    };
+    return Animal;
+}());
+var lion = new Animal('RAAAWWR');
+lion.sing;
+//Union 
+var confused = 'hello';
