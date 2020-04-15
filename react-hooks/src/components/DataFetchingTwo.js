@@ -47,7 +47,6 @@ function DataFetchingTwo() {
         <div>
             {state.loading ? 'Loading' : state.post.title}
             {state.error ? state.error : null}
-            
         </div>
     )
 }
