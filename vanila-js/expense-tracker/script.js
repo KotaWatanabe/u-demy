@@ -101,6 +101,7 @@ function updateLocalStorage() {
 function init() {
     list.innerHTML = '';
     transactions.forEach(addTransactionDOM);
+    updateValues();
 }
 
 init();
