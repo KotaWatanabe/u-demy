@@ -1,0 +1,14 @@
+.page {
+    background-color: gray;
+    margin: 0; 
+}
+
+.page h1 {
+    color:#f3f3f3;
+    margin: 0;
+}
+
+.text {
+    text-transform: uppercase;
+    margin: 0 10px;
+}
