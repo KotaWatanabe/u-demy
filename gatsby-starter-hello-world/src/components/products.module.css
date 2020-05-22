@@ -1,14 +1,32 @@
 .page {
-    background-color: gray;
-    margin: 0; 
+    width: 90%;
+    max-width: 1170px;
+    text-transform: capitalize;
+    margin: 0 auto;
 }
 
-.page h1 {
-    color:#f3f3f3;
-    margin: 0;
+.page span {
+    margin-left: 2rem;
+    color:grey;
 }
 
-.text {
-    text-transform: uppercase;
-    margin: 0 10px;
+.page article {
+    margin: 2rem 0;
+}
+
+.page div {
+    height: 15rem;
+}
+
+@media screen and (min-width:768px) {
+    .page {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+    }
+}
+@media screen and (min-width:992px) {
+    .page {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
