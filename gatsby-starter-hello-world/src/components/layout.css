@@ -70,3 +70,16 @@ footer {
 .small {
     width: 100px;
 }
+
+.single-product {
+    width: 90%;
+    max-width: 1170px;
+    margin: 3rem auto;
+}
+
+@media(min-width:768px) {
+    .single-product {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+}
