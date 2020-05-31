@@ -3,6 +3,7 @@ const hours = document.getElementById('hours')
 const minutes = document.getElementById('minutes')
 const seconds = document.getElementById('seconds')
 const countdown = document.getElementById('countdown')
+const loading = document.getElementById('loading')
 
 const year = document.getElementById('year')
 
@@ -10,6 +11,9 @@ const currentYear = new Date().getFullYear();
 
 const nextBirthday = new Date(`March 16 ${currentYear + 1} 00:00:00`)
 
+year.innerText = currentYear + 1;
+
+//Update countdown time
 function updateCountdown() {
     const currentTime = new Date();
     const diff = nextBirthday - currentTime;
@@ -25,5 +29,12 @@ function updateCountdown() {
     seconds.innerText = s < 10 ? '0' + s : s;
 }
 
+//Show spinner before countdown
+setTimeout(() => {
+    loading.remove();
+    countdown.style.display = 'flex';
+}, 1000)
+
+//Run every second
 setInterval(updateCountdown,1000);
 
