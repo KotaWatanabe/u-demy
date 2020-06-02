@@ -46,11 +46,10 @@
 // console.log(reverseString('yoyo mastery'));
 //should return: 'yretsam oyoy'
 
-const text = 'watanabe kota'
 
-console.log(text.substr(1) + text.charAt(0));
-console.log(text.substr(1) + text.charAt(0));
-console.log(text.substr(1) + text.charAt(0));
+
+// console.log(text.substr(1) + text.charAt(0));
+
 
 
 // function sumUp(n) {
@@ -75,3 +74,50 @@ console.log(text.substr(1) + text.charAt(0));
 // }
 
 // console.log(fibonacci(5));
+
+// function sumRange(n, total=0) {
+//     if(n <= 0) {
+//         return total
+//     }
+//     return sumRange(n-1, total + n);
+// }
+
+// console.log(sumRange(3));
+
+// function factorial(n, sum=1) {
+//     if(n <= 0) {
+//         return sum
+//     }
+//     return factorial(n-1, sum*n);
+// }
+
+// console.log(factorial(5));
+// const text = 'watanabe kota'
+// function reverseString(str, result='') {
+//     if(str.length <= 0) {
+//         return result;
+//     }
+//     return reverseString(str.substr(1), result=str.charAt(0)+result);
+// }
+
+// console.log(reverseString(text));
+
+/// --------- moemoization ---------- ////
+
+function fibmemo(n, memory=[]) {
+    if(memory[n] != null) {
+        return memory[n]
+    } 
+    let result
+    if(n < 2) {
+        result = n
+    } else {
+        result = fibmemo(n - 1, memory) + fibmemo(n - 2, memory)
+    }
+    memory[n] = result;
+   
+    return result;
+}
+
+console.log(fibmemo(2));
+
