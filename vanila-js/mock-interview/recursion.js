@@ -104,20 +104,57 @@
 
 /// --------- moemoization ---------- ////
 
-function fibmemo(n, memory=[]) {
-    if(memory[n] != null) {
-        return memory[n]
-    } 
-    let result
-    if(n < 2) {
-        result = n
-    } else {
-        result = fibmemo(n - 1, memory) + fibmemo(n - 2, memory)
-    }
-    memory[n] = result;
+// function fibmemo(n, memory=[]) {
+//     if(memory[n] != null) {
+//         return memory[n]
+//     } 
+//     let result
+//     if(n < 2) {
+//         result = n
+//     } else {
+//         result = fibmemo(n - 1, memory) + fibmemo(n - 2, memory)
+//     }
+//     memory[n] = result;
    
-    return result;
-}
+//     return result;
+// }
 
-console.log(fibmemo(2));
+// console.log(fibmemo(2));
 
+// function twoSums(nums, target) {  
+//     let memory = {};  
+//     for(let i = 0; i < nums.length; i++) {  
+//         const currentNum = nums[i];
+//         const needValue = target - currentNum;
+//         index2 = memory[needValue];
+//         if(index2 != null) {
+//             return [index2, i]
+//         } else {
+//             memory[currentNum] = i
+//         }
+//     }
+// } 
+
+// console.log(twoSums([2,7,9,11],9));
+
+
+// function longestPrefix(strs) {
+//     let longest = '';
+
+//     for(let i = 0; i < strs[0].length; i++) {
+//         const char = strs[0][i];
+
+//         for(let j = 0; j < strs.length; j++) {
+            
+//             if(strs[j][i] !== char) {
+//                 return longest;
+//             } 
+//         }
+//         longest += char
+//     }
+//     return longest;
+// }
+
+
+// console.log(longestPrefix(['flower','flow','flight']));
+// console.log(longestPrefix(['dog','racecar','car']));

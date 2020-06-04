@@ -214,6 +214,12 @@
 //     return arr;
 // }
 
+// function removeDuplicate(arr) {
+//     return arr.filter((item, index) => arr.indexOf(item) === index)
+// }
+
+// console.log(removeDuplicate([1,2,5,3,2,1,5,3]));
+
 
 /**
 It accepts two objects as arguments: the first object is the recipe
@@ -223,42 +229,42 @@ Each ingredient's value is a number representing how many units there are.
 `batches(recipe, available)`
 */
 
-function batches(recipe,available) {
-    let tempStock = [];
-    for(let ingredient in recipe) {
-        if(!available[ingredient]) {
-            return 0;
-        }
+// function batches(recipe,available) {
+//     let tempStock = [];
+//     for(let ingredient in recipe) {
+//         if(!available[ingredient]) {
+//             return 0;
+//         }
 
-        tempStock.push(Math.floor(available[ingredient] /recipe[ingredient]));
-    }
-    if(tempStock.includes(0)) {
-        return 0;
-    }
-    return Math.min(...tempStock);
-}
+//         tempStock.push(Math.floor(available[ingredient] /recipe[ingredient]));
+//     }
+//     if(tempStock.includes(0)) {
+//         return 0;
+//     }
+//     return Math.min(...tempStock);
+// }
 
-// 0 batches can be made
-batches(
-    { milk: 100, butter: 50, flour: 5 },
-    { milk: 132, butter: 48, flour: 51 }
-  )
-  batches(
-    { milk: 100, flour: 4, sugar: 10, butter: 5 },
-    { milk: 1288, flour: 9, sugar: 95 }
-  )
+// // 0 batches can be made
+// batches(
+//     { milk: 100, butter: 50, flour: 5 },
+//     { milk: 132, butter: 48, flour: 51 }
+//   )
+//   batches(
+//     { milk: 100, flour: 4, sugar: 10, butter: 5 },
+//     { milk: 1288, flour: 9, sugar: 95 }
+//   )
   
-  // 1 batch can be made
-  batches(
-    { milk: 100, butter: 50, cheese: 10 },
-    { milk: 198, butter: 52, cheese: 10 }
-  )
+//   // 1 batch can be made
+//   batches(
+//     { milk: 100, butter: 50, cheese: 10 },
+//     { milk: 198, butter: 52, cheese: 10 }
+//   )
   
-  // 2 batches can be made
-  batches(
-    { milk: 2, sugar: 40, butter: 20 },
-    { milk: 5, sugar: 120, butter: 500 }
-  )
+//   // 2 batches can be made
+//   batches(
+//     { milk: 2, sugar: 40, butter: 20 },
+//     { milk: 5, sugar: 120, butter: 500 }
+//   )
 
 
 // function maskString(str) {
@@ -335,16 +341,113 @@ batches(
 //     const c3 = increment()
 //     console.log('example increment', c1, c2, c3)
 
-function createCounter() {
-   let counter = 0
-   const myFunction = function() {
-     counter = counter + 1
-     return counter
-   }
-   return myFunction
- }
- const increment = createCounter()
-    const c1 = increment()
-    const c2 = increment()
-    const c3 = increment()
-    console.log('example increment', c1, c2, c3)
+// function createCounter() {
+//    let counter = 0
+//    const myFunction = function() {
+//      counter = counter + 1
+//      return counter
+//    }
+//    return myFunction
+//  }
+//  const increment = createCounter()
+//     const c1 = increment()
+//     const c2 = increment()
+//     const c3 = increment()
+//     console.log('example increment', c1, c2, c3)
+
+
+// function tripletNum(nums, target) {
+//     for(let i = 0; i < nums.length; i++) {
+//         let memory = {};
+//         let neededNum = target - nums[i];
+//         for(let j = i + 1; j < nums.length; j++){
+//             if(memory[neededNum - nums[j]]) {
+//                 return [nums[i], nums[j],neededNum - nums[j]]
+//             }
+//             memory[nums[j]] = true;
+//         }         
+//     }
+//     return [];
+// }
+  
+// console.log(tripletNum([1, 2, 5, -2, 0, 10, 5, 3, 4],12));
+
+// function drawLine(num) {
+//     let result = ''
+//     for(let i = 0; i < num; i++) {
+//         result += '-' +'\n' ;
+//     }
+//     console.log(result);
+    
+    
+// }
+
+// drawLine(8)
+// console.log('test');
+
+
+// const example = 'kota watanabe'
+// const logestLength = example.length;
+
+// console.log(logestLength);
+
+// console.log(logestLength);
+
+// console.log(addTwo(logestLength));
+// console.log(addTwo(10));
+// console.log(addTwo(7));
+// console.log(addTwo(8));
+
+// function wordCounts(str) {
+//     let countObject = {};
+//     const strArr = str.split(' ');
+//     for(let i = 0; i < strArr.length; i++) {
+//         if(!countObject[strArr[i]]) {
+//             countObject[strArr[i]] = 1;
+//         } else {
+//             countObject[strArr[i]] += 1;
+//         }
+//     }
+//     return countObject;
+// }
+
+// console.log(wordCounts('this is this and that'));
+
+// function twoSum(nums,target) {
+//     let memory = {};
+//     for(let i = 0; i < nums.length; i++) {
+//         const neededNum = target-nums[i]
+//         if(memory[neededNum] !== undefined && memory[neededNum] !== i) {
+//             return [memory[neededNum],i]
+//         } else {
+//             memory[nums[i]] = i;
+//         }
+//         console.log(i, neededNum, memory);
+//     }
+
+    
+//     return [];
+// }
+function threeSum(nums,target) {
+    for(let i = 0; i < nums.length; i++) {
+        let memory = {};
+        const neededNum = target - nums[i];
+        for(let j = i + 1; j < nums.length; j++) {
+            const lastPiece = neededNum - nums[j]
+            if(memory[lastPiece]) {
+                return [i,j,memory[lastPiece]]
+            }else {
+                memory[nums[j]] = j;
+            }
+            console.log(memory);
+        }
+ 
+
+        
+    }
+    return [];
+}
+
+// console.log(twoSum([3, 2, 4],6));
+// console.log(twoSum([6, 2, 3, 9, -5, 5, 7, 2],1));
+console.log(threeSum([1,2,3,4,5],9));
