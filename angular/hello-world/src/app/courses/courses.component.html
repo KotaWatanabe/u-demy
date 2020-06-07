@@ -3,3 +3,16 @@
         {{ course }}
     </li>
 </ul>
+<div (click)="onDivClicked($event)">
+    <button (click)="onSave($event)" >Save</button>
+</div>
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+<br>
+{{ course.title | uppercase | lowercase }} <br>
+{{ course.students | number }} <br>
+{{ course.rating | number:'1.2-2'}} <br>
+{{ course.price | currency}} <br>
+{{ course.releaseDate | date:'shortDate'}} <br>
+
+{{ text | summary: 30 }}
+
