@@ -10,6 +10,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors.service';
 import { SummaryPipe } from './summary.pipe';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { TitlizePipe } from './titlize.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     CoursesComponent,
     AuthorsComponent,
     SummaryPipe,
+    TitlizePipe,
     FavouritesComponent
   ],
   imports: [
