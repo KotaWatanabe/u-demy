@@ -7,7 +7,14 @@
         <p>Some content here...</p>
     </div>
 </bootstrap-panel> -->
-<like 
+<!-- <like 
     [likeCount] = "tweet.likeCount" 
     [isActive] = "tweet.isLiked"
-></like>
+></like> -->
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
+<ng-template #coursesList>
+    List of Course
+</ng-template>
+<ng-template #noCourses>
+    no courses yet
+</ng-template>
