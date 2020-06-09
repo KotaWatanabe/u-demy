@@ -11,6 +11,8 @@ import { AuthorsService } from './authors.service';
 import { SummaryPipe } from './summary.pipe';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { TitlizePipe } from './titlize.pipe';
+import { PanelComponent } from './panel/panel.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { TitlizePipe } from './titlize.pipe';
     AuthorsComponent,
     SummaryPipe,
     TitlizePipe,
-    FavouritesComponent
+    FavouritesComponent,
+    PanelComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
