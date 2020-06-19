@@ -1,9 +1,15 @@
 import React from 'react'
+import './styles.scss'
+import Logo from './../assets/graphics/logo.png'
 
 export default function Header() {
     return (
         <header>
-            LOGO
+            <div className="wrap">
+                <div className="logo">
+                    <img src={Logo} alt='Logo'></img>
+                </div>
+            </div>
         </header>
     )
 }
