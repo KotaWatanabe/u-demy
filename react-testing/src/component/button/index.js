@@ -25,7 +25,8 @@ class SharedButton extends Component {
 }
 
 SharedButton.propTypes = {
-    buttonText: PropTypes.string
+    buttonText: PropTypes.string,
+    emitEvent: PropTypes.func
 }
 
 export default SharedButton;
