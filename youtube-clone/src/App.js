@@ -12,6 +12,10 @@ export default class App extends Component {
     selectedVideo: null
   };
 
+  componentDidMount() {
+    this.onFormSubmit('pdf generation with node');
+  }
+
   onFormSubmit = async searchTerm => {
     const response = await youtube.get('search', { params: { q: searchTerm } });
     this.setState({
@@ -19,11 +23,16 @@ export default class App extends Component {
       selectedVideo: response.data.items[0]
     });
   };
+
+  onVideoSelect = video => {
+    this.setState({ selectedVideo: video });
+  };
+
   render() {
-    const { selectedVideo } = this.state;
+    const { selectedVideo, videos } = this.state;
     return (
-      <Grid justify="center" container spacing={10}>
-        <Grid item xs={12}>
+      <Grid style={{ justifyContent: 'center' }} container spacing={10}>
+        <Grid item xs={11}>
           <Grid container spacing={10}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.onFormSubmit} />
@@ -32,7 +41,7 @@ export default class App extends Component {
               <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              <VideoLists />
+              <VideoLists videos={videos} onVideoSelect={this.onVideoSelect} />
             </Grid>
           </Grid>
         </Grid>
