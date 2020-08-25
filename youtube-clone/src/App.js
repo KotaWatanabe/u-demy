@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Grid } from '@material-ui/core';
 
@@ -6,46 +6,39 @@ import { SearchBar, VideoLists, VideoDetail } from './components';
 
 import youtube from './api/youtube';
 
-export default class App extends Component {
-  state = {
-    videos: [],
-    selectedVideo: null
-  };
+const App = () => {
+  const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  componentDidMount() {
-    this.onFormSubmit('pdf generation with node');
+  useEffect(() => {
+    onFormSubmit('pdf generation with node');
+  }, []);
+
+  async function onFormSubmit(searchTerm) {
+    const {
+      data: { items: videos }
+    } = await youtube.get('search', { params: { q: searchTerm } });
+    setVideos(videos);
+    setSelectedVideo(videos[0]);
   }
 
-  onFormSubmit = async searchTerm => {
-    const response = await youtube.get('search', { params: { q: searchTerm } });
-    this.setState({
-      videos: response.data.items,
-      selectedVideo: response.data.items[0]
-    });
-  };
-
-  onVideoSelect = video => {
-    this.setState({ selectedVideo: video });
-  };
-
-  render() {
-    const { selectedVideo, videos } = this.state;
-    return (
-      <Grid style={{ justifyContent: 'center' }} container spacing={10}>
-        <Grid item xs={11}>
-          <Grid container spacing={10}>
-            <Grid item xs={12}>
-              <SearchBar onFormSubmit={this.onFormSubmit} />
-            </Grid>
-            <Grid item xs={8}>
-              <VideoDetail video={selectedVideo} />
-            </Grid>
-            <Grid item xs={4}>
-              <VideoLists videos={videos} onVideoSelect={this.onVideoSelect} />
-            </Grid>
+  return (
+    <Grid style={{ justifyContent: 'center' }} container spacing={10}>
+      <Grid item xs={11}>
+        <Grid container spacing={10}>
+          <Grid item xs={12}>
+            <SearchBar onFormSubmit={onFormSubmit} />
+          </Grid>
+          <Grid item xs={8}>
+            <VideoDetail video={selectedVideo} />
+          </Grid>
+          <Grid item xs={4}>
+            <VideoLists videos={videos} onVideoSelect={setSelectedVideo} />
           </Grid>
         </Grid>
       </Grid>
-    );
-  }
-}
+    </Grid>
+  );
+};
+
+export default App;
