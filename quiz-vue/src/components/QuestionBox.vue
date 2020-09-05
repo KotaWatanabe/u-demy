@@ -27,7 +27,6 @@
 <script>
 import _ from "lodash";
 export default {
-  // props: ["currentQuestion"]
   props: {
     currentQuestion: Object,
     next: Function,

@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <Header :numCorrect="numCorrect" :numTotal="numTotal"/>
+    <Header :numCorrect="numCorrect" :numTotal="numTotal" :reset="reset"/>
 
     <b-container class="bv-example-row">
       <b-row>
         <b-col sm="6" offset="3">
+          <QuizConfig v-if="questions.length === 0" :fetchQuestions="fetchQuestions"/>
           <QuestionBox
             v-if="questions.length"
             :next="next"
@@ -20,12 +21,14 @@
 <script>
 import Header from "./components/Header.vue";
 import QuestionBox from "./components/QuestionBox.vue";
+import QuizConfig from "./components/QuizConfig.vue";
 
 export default {
   name: "App",
   components: {
     Header,
-    QuestionBox
+    QuestionBox,
+    QuizConfig
   },
   data() {
     return {
@@ -44,15 +47,27 @@ export default {
         this.numCorrect++;
       }
       this.numTotal++;
+    },
+    fetchQuestions(category, difficulty) {
+      fetch(
+        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
+      )
+        .then(res => res.json())
+        .then(jsonData => {
+          this.questions = jsonData.results;
+        });
+    },
+    reset() {
+      this.questions = [];
     }
-  },
-  mounted: function() {
-    fetch("https://opentdb.com/api.php?amount=10&category=27&type=multiple")
-      .then(res => res.json())
-      .then(jsonData => {
-        this.questions = jsonData.results;
-      });
   }
+  // mounted: function() {
+  //   fetch("https://opentdb.com/api.php?amount=10&category=27&type=multiple")
+  //     .then(res => res.json())
+  //     .then(jsonData => {
+  //       this.questions = jsonData.results;
+  //     });
+  // }
 };
 </script>
 
