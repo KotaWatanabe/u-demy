@@ -37,6 +37,17 @@ const actions = {
     );
 
     commit('removeTodo', id, response.data);
+  },
+
+  async filterTodos({ commit }, e) {
+    const limit = parseInt(
+      e.target.options[e.target.options.selectedIndex].innerText
+    );
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
+    );
+
+    commit('setTodos', response.data);
   }
 };
 
